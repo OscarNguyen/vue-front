@@ -20,7 +20,7 @@ export default {
     }
   },
   async fetch () {
-    const result = await this.$axios.get(`http://localhost:8080/api/news/${this.$route.params.id}`)
+    const result = await this.$axios.get(`${this.$axios.defaults.baseURL}news/${this.$route.params.id}`)
     this.returnedData = result.data
   },
   mounted () {

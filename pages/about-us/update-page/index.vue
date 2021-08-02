@@ -19,7 +19,7 @@ export default {
     }
   },
   async fetch () {
-    const result = await this.$axios.get('http://localhost:8080/api/page/about-us')
+    const result = await this.$axios.get(`${this.$axios.defaults.baseURL}page/about-us`)
     console.log(result)
     this.content = result.data.content
   }

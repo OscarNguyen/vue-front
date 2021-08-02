@@ -1,0 +1,35 @@
+version: '3'
+services:
+#   playground-web-db:
+#     image: mongo:4.2.2
+#     environment:
+#       MONGO_INITDB_DATABASE: playground-web
+#     ports:
+#       - 27017:27017
+    frontend:
+        image: second-app:latest
+        environment:
+            - PORT=3000
+            - PROXY_API=http://backend:8080/
+        ports:
+            - 3000:3000
+        networks:
+            - shared-network
+          
+    backend-server:
+        container_name: backend-server
+        image: second-app-backend:latest
+        # environment:
+    #   MONGODB_URI: mongodb://playground-web-db:27017/playground-web
+            # MONGODB_URI: mongodb+srv://minh:jakenguyen@nuxt-data.cxwbx.mongodb.net/nuxtDatabase?retryWrites=true&w=majority
+        ports:
+            - 8080:8080
+        networks:
+            - shared-network
+# networks:
+#     default:
+#         # external: true
+#         driver: bridge
+#         # name: second-app_default
+networks:
+    shared-network: {}

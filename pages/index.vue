@@ -1,12 +1,13 @@
 <template>
   <div class="root">
     <b-spinner v-if="$fetchState.pending" class="spinner" />
-
-    <BaseCard v-else v-html="content" />
-    <div class="center-btn-container">
-      <b-button class="primary-btn" @click="toUpdatePage">
-        Update
-      </b-button>
+    <div v-else>
+      <BaseCard v-html="content" />
+      <div class="center-btn-container">
+        <b-button class="primary-btn" @click="toUpdatePage">
+          Update
+        </b-button>
+      </div>
     </div>
 
     <!-- <no-ssr>
@@ -50,7 +51,7 @@ export default {
     }
   },
   async fetch () {
-    const result = await this.$axios.get('http://localhost:8080/api/page/homepage')
+    const result = await this.$axios.get(`${this.$axios.defaults.baseURL}page/homepage`)
     console.log(result)
     this.content = result.data.content
   },
@@ -59,6 +60,11 @@ export default {
     // this.getContent()
     // this.fetch()
     console.log(this.$fetchState)
+    console.log(process.env.PROXY_API)
+    console.log(process.env.PORT)
+    console.log('cc')
+    console.log(this)
+    console.log(this.$axios.defaults)
   },
 
   methods: {

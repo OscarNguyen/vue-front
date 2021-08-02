@@ -19,12 +19,14 @@
             @change="onEditorChange($event)"
           />
         </b-form-group>
-        <b-button class="primary-btn" type="submit">
-          Submit
-        </b-button>
-        <b-button variant="warning" @click="onCancel">
-          Cancel
-        </b-button>
+        <div class="btn-group">
+          <b-button class="primary-btn" type="submit">
+            Submit
+          </b-button>
+          <b-button variant="warning" @click="onCancel">
+            Cancel
+          </b-button>
+        </div>
       </div>
     </form>
   </div>
@@ -168,7 +170,7 @@ h1{
 }
 .quill-container{
 
-      margin:24px 32px;
+    margin:24px 32px;
     .quill-editor{
     // border-top: 1px solid #ccc !important;
     width: 100%;
@@ -176,14 +178,20 @@ h1{
     max-height: 400px;
     overflow-y: auto;
     }
-  input{
-    border-color: #ccc;
-  }
-    button{
-      margin-left: 0;
-      margin-top: 24px;
+    input{
       border-color: #ccc;
     }
+    button{
+      margin-left: 0;
+      margin-right: 16px;
+      margin-top: 24px;
+      border-color: #ccc;
+      border-radius: 5px !important;
+    }
+    // .btn-group{
+    //   display: flex;
+    //   width: 15%;
+    // }
 
   }
 </style>

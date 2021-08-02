@@ -20,7 +20,7 @@ export default {
     }
   },
   async fetch () {
-    const result = await this.$axios.get(`http://localhost:8080/api/news/${this.$route.params.id}`)
+    const result = await this.$axios.get(`${this.$axios.defaults.baseURL}news/${this.$route.params.id}`)
     console.log(result.data)
     this.newsItem = result.data
   },
@@ -38,6 +38,7 @@ h1{
   text-align: center;
   color:$primary-color;
   margin-bottom: 5rem;
+  margin-top: 6rem;
 }
 .root{
   width:70%;

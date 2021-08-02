@@ -34,7 +34,7 @@ export default {
     }
   },
   async fetch () {
-    const result = await this.$axios.get('http://localhost:8080/api/news/')
+    const result = await this.$axios.get(`${this.$axios.defaults.baseURL}news/`)
     console.log(result)
     this.news = result.data
   },

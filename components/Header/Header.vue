@@ -50,6 +50,8 @@ export default {
   a:last-child{
     margin-right: 0;
   }
-
+  .nuxt-link-active{
+    border-bottom: 1px solid $primary-color ;
+  }
 }
 </style>
