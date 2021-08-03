@@ -7,6 +7,7 @@ services:
 #     ports:
 #       - 27017:27017
     frontend:
+        build: .
         image: second-app:latest
         environment:
             - PORT=3000
@@ -15,8 +16,9 @@ services:
             - 3000:3000
         networks:
             - shared-network
-          
+        restart: on-failure  
     backend-server:
+        build: ./server/
         container_name: backend-server
         image: second-app-backend:latest
         # environment:
@@ -26,6 +28,7 @@ services:
             - 8080:8080
         networks:
             - shared-network
+        restart: on-failure
 # networks:
 #     default:
 #         # external: true

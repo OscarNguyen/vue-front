@@ -1,8 +1,9 @@
 <template>
   <div class="root">
-    <b-spinner v-if="$fetchState.pending" class="spinner" />
+    <!-- <b-spinner v-if="$fetchState.pending" class="spinner" /> -->
 
-    <div v-else>
+    <!-- <div v-else> -->
+    <div>
       <BaseCard v-html="content" />
       <div class="center-btn-container">
         <b-button class="primary-btn" @click="toUpdatePage">
@@ -15,15 +16,23 @@
 
 <script>
 export default {
-  data () {
-    return {
-      content: ''
-    }
-  },
-  async fetch () {
-    const result = await this.$axios.get(`${this.$axios.defaults.baseURL}page/about-us`)
+  // data () {
+  //   return {
+  //     content: ''
+  //   }
+  // },
+  // async fetch () {
+  //   const result = await this.$axios.get(`${this.$axios.defaults.baseURL}page/about-us`)
+  //   console.log(result)
+  //   this.content = result.data.content
+  // },
+  async asyncData ({ $axios }) {
+    const result = await $axios.get(`${$axios.defaults.baseURL}page/about-us`)
     console.log(result)
-    this.content = result.data.content
+    return {
+
+      content: result.data.content
+    }
   },
   mounted () {
     console.log(this.$fetchState)
